@@ -32,6 +32,7 @@ namespace Projet_Finale.Controllers
 			return View(credentials);
 		}
 
+		[HttpPost]
 		public IActionResult Login(Credentials credentials)
 		{
 			if (true) // <-- Logique à mettre pour aller rechercher dans la BD
