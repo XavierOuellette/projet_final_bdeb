@@ -25,25 +25,27 @@ namespace Projet_Finale.Controllers
 				if (isValid)
 				{
 					//test
-					return RedirectToAction("Privacy", "Home");
+					return RedirectToAction("Index", "Home");
 				}
-				else
-				{
-					//test
-					ModelState.AddModelError(String.Empty, "Invalid credentials");
-                    return RedirectToAction("Index", "Home");
-                }
 			}
 
 			return View(credentials);
 		}
 
+		public IActionResult Login(Credentials credentials)
+		{
+			if (true) // <-- Logique à mettre pour aller rechercher dans la BD
+            {
+				return RedirectToAction("Index", "Home");
+			}
+			return View(credentials);
+		}
 
 		//logique d'authentification (TEST) 
 		private bool ValidateCredentials (string username, string password, string passwordValidate)
 		{
-			if (password.Equals(passwordValidate))
-			{
+			if (password.Equals(passwordValidate)) // <-- Logique à mettre pour aller écrire dans la BD
+            {
 				return true;
 			}
 			return false;
