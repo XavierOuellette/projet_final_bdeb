@@ -8,26 +8,27 @@
 
 
 <!--Le forms pour créer un compte-->
+<!--Le formulaire pour créer un compte-->
 <div class="login-page">
     <div class="login-container">
         <h2>Créer un compte</h2>
         <form id="myForm" asp-action="CreateAcc" method="post">
-            
+
             <div class="form-group">
                 <label asp-for="Username">Username:</label>
-                <input asp-for="Username" class="form-control" />
+                <input asp-for="Username" class="form-control" id="username" />
                 <span asp-validation-for="Username" class="text-danger"></span>
             </div>
 
             <div class="form-group">
                 <label asp-for="Password">Password:</label>
-                <input asp-for="Password" type="password" id="password" pattern="^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[!#$%^&*()-_+=])[A-Za-z\d!#$%^&*()-_+=]{8,25}$" required>
+                <input asp-for="Password" type="password" class="form-control" id="password" pattern="^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[!#$%^&*()-_+=])[A-Za-z\d!#$%^&*()-_+=]{8,25}$" required>
                 <span asp-validation-for="Password" class="text-danger"></span>
             </div>
 
             <div class="form-group">
                 <label asp-for="PasswordValidate">Confirm Password:</label>
-                <input asp-for="PasswordValidate" type="password" id="passwordValidate" required>
+                <input asp-for="PasswordValidate" type="password" class="form-control" id="passwordValidate" required>
                 <span asp-validation-for="PasswordValidate" class="text-danger"></span>
             </div>
 
@@ -39,4 +40,45 @@
             <p>Vous avez déjà un compte? <a href="~/Login/Login">Connectez-vous</a>.</p>
         </div>
     </div>
-</div> 
+</div>
+
+<script>
+    document.getElementById('myForm').addEventListener('submit', function (event) {
+        event.preventDefault(); // Empêche le formulaire de se soumettre normalement
+
+        // Récupère les valeurs des champs du formulaire
+        var username = document.getElementById('username').value;
+        var password = document.getElementById('password').value;
+        var email = document.getElementById('email').value;
+
+        // Crée un objet JSON avec les données du formulaire
+        var userData = {
+            "username": username,
+            "password": password,
+            "email": email
+        };
+
+        // Envoie les données du formulaire au service REST à la route /insert_user
+        fetch('/insert_user', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(userData)
+        })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Erreur lors de la création du compte');
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log(data); // Affiche la réponse du serveur dans la console
+                // Ajoutez ici le code pour gérer la réponse du serveur (par exemple, afficher un message de succès)
+            })
+            .catch(error => {
+                console.error('Erreur:', error);
+                // Ajoutez ici le code pour gérer les erreurs (par exemple, afficher un message d'erreur)
+            });
+    });
+</script>
