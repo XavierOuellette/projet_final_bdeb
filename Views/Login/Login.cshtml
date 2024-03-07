@@ -6,27 +6,78 @@
 <!--Référence à wwwroot/css/LoginStyle.css pour aller chercher les règles de css pour la view Login-->
 <link rel="stylesheet" href="~/css/LoginStyle.css" />
 
-<!--Le forms de login-->
-<div class="login-page">
-    <div class="login-container">
-        <h2>Se connecter</h2>
-        <form action="#" method="post">
-            <div class="form-group">
-                <label for="username">Username:</label>
-                <input type="text" id="username" name="username" required>
-            </div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>FiveM</title>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oswald">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open Sans">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        h1, h2, h3, h4, h5, h6 {
+            font-family: "Oswald"
+        }
 
-            <div class="form-group">
-                <label for="password">Password:</label>
-                <input type="password" id="password" name="password" required>
-            </div>
+        body {
+            font-family: "Open Sans"
+        }
 
-            <div class="form-group">
-                <button type="submit">Connexion</button>
+        body {
+            margin: 0;
+            padding: 0;
+            background: url('/images/forest.jpg') center/cover no-repeat; /* Set the background image for the body */
+            background-color: #0f1b23c4; /* Fallback background color */
+        }
+
+        header {
+            background: linear-gradient(to bottom, rgba(24, 75, 109, 0.8), #070d11cb);
+            padding: 48px;
+            text-align: center;
+        }
+
+        .w3-button {
+            color: white; /* Set text color for buttons */
+        }
+    </style>
+</head>
+<body>
+    <!-- w3-content defines a container for fixed-size centered content,
+      and is wrapped around the whole page content, except for the footer in this example -->
+    <div>
+        <div style="background-color: #0f1b23cb; justify-content: center; display: flex;">
+            <div style="max-width: 750px; text-align: center; font-size: large; font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; padding-bottom: 5rem;">
+
+                <img src="/images/Logo.PNG" style="padding-top: 2rem;">
+                <div class="login-page">
+                    <div class="login-container">
+                        <h2>Se connecter</h2>
+                        <form action="#" method="post">
+                            <div class="form-group">
+                                <label for="username">Username:</label>
+                                <input type="text" id="username" name="username" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="password">Password:</label>
+                                <input type="password" id="password" name="password" required>
+                            </div>
+
+                            <div class="form-group">
+                                <button type="submit">Connexion</button>
+                            </div>
+                        </form>
+                        <div class="form-group">
+                            <p>Pas de compte? <a href="~/Login/CreateAcc">Créer un compte</a>.</p>
+                        </div>
+                    </div>
+                </div>
+                <img src="/images/cliqueDiscord.PNG"> <img src="/images/cliqueFiveM.PNG">
             </div>
-        </form>
-        <div class="form-group">
-            <p>Pas de compte? <a href="~/Login/CreateAcc">Créer un compte</a>.</p>
         </div>
+        <!-- END w3-content -->
     </div>
-</div>
+</body>
+</html>
