@@ -9,35 +9,21 @@
     <link rel="stylesheet" href="~/Projet_Finale.styles.css" asp-append-version="true" />
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Accueil</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Vision">Notre Vision</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Boutique" asp-action="Boutique">Boutique</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="FAQ">FAQ</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Login" asp-action="Login">Log In</a>
-                        </li>
-                    </ul>
-                </div>
-            </div> 
-        </nav>
+    <div class="w3-bar w3-black w3-hide-small">
+        <a href="#" class="w3-bar-item w3-button"><i class="fa fa-facebook-official"></i></a>
+        <a href="#" class="w3-bar-item w3-button"><i class="fa fa-instagram"></i></a>
+        <a href="#" class="w3-bar-item w3-button"><i class="fa fa-snapchat"></i></a>
+        <a href="#" class="w3-bar-item w3-button"><i class="fa fa-flickr"></i></a>
+        <a href="#" class="w3-bar-item w3-button"><i class="fa fa-twitter"></i></a>
+        <a href="#" class="w3-bar-item w3-button"><i class="fa fa-linkedin"></i></a>
+        <a href="#" class="w3-bar-item w3-button w3-right"><i class="fa fa-search"></i></a>
+    </div>
+    <header class="w3-container w3-center w3-padding-48">
+        <a class="w3-button  w3-padding-large w3-margin-bottom" style="font-size:xx-large;" asp-controller="Home" asp-action="Index">ACCUEIL</a>
+        <a class="w3-button  w3-padding-large w3-margin-bottom" style="font-size:xx-large;" asp-controller="Home" asp-action="Vision">VISION</a>
+        <a class="w3-button  w3-padding-large w3-margin-bottom" style="font-size:xx-large;" asp-controller="Boutique" asp-action="Boutique">BOUTIQUE</a>
+        <a class="w3-button  w3-padding-large w3-margin-bottom" style="font-size:xx-large;" asp-controller="Home" asp-action="FAQ">FAQ</a>
+        <a class="w3-button  w3-padding-large w3-margin-bottom" style="font-size:xx-large;" asp-controller="Login" asp-action="Login">SE CONNECTER</a>
     </header>
     <div class="container">
         <main role="main" class="pb-3">
