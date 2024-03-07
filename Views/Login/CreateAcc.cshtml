@@ -59,7 +59,7 @@
         };
 
         // Envoie les données du formulaire au service REST à la route /insert_user
-        fetch('/insert_user', {
+    fetch('http://localhost:5050/insert_user', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
