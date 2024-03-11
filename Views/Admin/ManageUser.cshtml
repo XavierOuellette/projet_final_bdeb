@@ -27,7 +27,7 @@
                 <td class="editable">
                     <select class="role-dropdown" disabled>
                         @foreach (var role in ViewBag.Roles)
-                        {
+                        {cc2
                             <!option value="@role" @(role == user.Role ? "selected='selected'" : "")>@role</!option>
                         }
                     </select>
