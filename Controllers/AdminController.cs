@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using Projet_Finale.Models;
-using System.Text;
 
 namespace Projet_Finale.Controllers
 {
