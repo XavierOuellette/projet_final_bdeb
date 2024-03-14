@@ -13,7 +13,8 @@ namespace Projet_Finale.Models
         public string Description { get; set; }
 
         [Required]
-        public string Price { get; set; }
+        [DataType(DataType.Currency)]
+        public decimal Price { get; set; }
 
         public IFormFile Image { get; set; }  
         public string ImagePath { get; set; }
