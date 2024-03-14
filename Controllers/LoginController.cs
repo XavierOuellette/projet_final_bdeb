@@ -36,7 +36,6 @@ namespace Projet_Finale.Controllers
 				bool isValid = ValidateCredentials(credentials.Username, credentials.Password, credentials.PasswordValidate);
 				if (isValid)
 				{
-					//test
 					return RedirectToAction("Index", "Home");
 				}
 			}

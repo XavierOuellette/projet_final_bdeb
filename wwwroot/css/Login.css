@@ -19,3 +19,18 @@
 .btn-custom {
     background-color: #68c1ff;
 }
+
+.custom-checkbox input[type="checkbox"] {
+    transform: scale(2); /* Augmenter la taille du checkbox */
+}
+
+
+#available-group {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#available-label {
+    margin-right: 20px; /* Espacement entre le label et le checkbox */
+}
