@@ -15,6 +15,7 @@ namespace Projet_Finale.Models
         [Required]
         public string Price { get; set; }
 
+        public IFormFile Image { get; set; }  
         public string ImagePath { get; set; }
 
         public bool Available { get; set; }
