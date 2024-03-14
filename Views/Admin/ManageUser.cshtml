@@ -168,8 +168,13 @@
         });
         $(".delete-button").click(function () {
             var $row = $(this).closest("tr");
-            var userId = $row.find(".id").text();
 
+            var userData = {
+                user_id: $row.find(".id").text(),
+                session_id: "@sessionId",
+                user_agent: navigator.userAgent,
+                ip_address: "@ipAddress"
+            }
             // Confirmation de suppression de l'utilisateur
             if (confirm("Êtes-vous sûr de vouloir supprimer cet utilisateur ?")) {
 
@@ -178,7 +183,7 @@
                     url: "http://127.0.0.1:5000/delete_user",
                     type: "DELETE",
                     contentType: "application/json",
-                    data: JSON.stringify({ user_id: userId }),
+                    data: JSON.stringify(userData),
                     success: function (response) {
                         // Actualiser la page ou effectuer d'autres actions après la suppression réussie
                         alert("Utilisateur supprimé avec succès.");
