@@ -1,7 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
+using Projet_Finale.Auth;
 using Projet_Finale.Models;
-using System.Text;
+using System.Net.Http;
+using System.Security;
 
 namespace Projet_Finale.Controllers
 {
@@ -17,7 +19,8 @@ namespace Projet_Finale.Controllers
 
         public async Task<ActionResult> ManageUser()
         {
-            var response = await _httpClient.GetAsync("/all_users");
+            SessionData session = new SessionData(HttpContext);
+            var response = await _httpClient.GetAsync($"/all_users?session_id={session.SessionID}&user_agent={session.UserAgent}&ip_address={session.IpAddress}");
             if (response.IsSuccessStatusCode)
             {
                 var content = await response.Content.ReadAsStringAsync();
@@ -27,9 +30,8 @@ namespace Projet_Finale.Controllers
             }
             else
             {
-                return View("Error", "Une erreur s'est produite lors du chargement des utilisateurs. Veuillez réessayer plus tard.");
+                return RedirectToAction("Index", "Home");
             }
         }
-
     }
 }
