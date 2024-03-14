@@ -44,6 +44,7 @@ Main components
     box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
     overflow: hidden;
     *zoom: 1;
+    color: White;
 }
 
 @media only screen and (min-width: 768px) {
@@ -51,6 +52,7 @@ Main components
         position: relative;
         margin: 4em auto;
         box-shadow: none;
+        color:White;
     }
 }
 
@@ -61,7 +63,7 @@ Main components
     height: 50px;
     line-height: 50px;
     padding: 0 28px 0 16px;
-    background-color: #4e5359;
+    background-color: #0c202d;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     color: #ffffff;
@@ -116,7 +118,7 @@ Main components
             }
 
     .no-touch .cd-faq-categories a:hover {
-        background: #555b61;
+        background: #68c1ff;
     }
 
     .no-js .cd-faq-categories {
@@ -142,7 +144,7 @@ Main components
             left: 0;
             height: 100%;
             width: 3px;
-            background-color: #a9c056;
+            background-color: #68c1ff;
             opacity: 0;
             -moz-transition: opacity 0.2s;
             -o-transition: opacity 0.2s;
@@ -151,7 +153,7 @@ Main components
         }
 
         .cd-faq-categories .selected {
-            background: #42464b !important;
+            background: #070d11cb !important;
         }
 
             .cd-faq-categories .selected::before {
@@ -307,7 +309,9 @@ Main components
         background: transparent;
         box-shadow: none;
         margin: 1em 0;
+        
     }
+
 
 .no-touch .cd-faq-group .cd-faq-title:hover {
     box-shadow: none;
@@ -359,15 +363,28 @@ Main components
     display: block;
     margin: 1.6em 0 0.4em;
     line-height: 1.2;
+    background-color: #0e2a3d;
+
+    
 }
 
-@media only screen and (min-width: 768px) {
-    .cd-faq-trigger {
+ul {
+    list-style-type: none;
+}
+
+    .cd-faq-trigger a {
+        color:white !important;
+
+    }
+
+    @media only screen and (min-width: 768px) {
+        .cd-faq-trigger {
         font-size: 24px;
         font-size: 1.5rem;
         font-weight: 300;
         margin: 0;
         padding: 24px 72px 24px 24px;
+        background-color: #0c202d;
     }
 
         .cd-faq-trigger::before, .cd-faq-trigger::after {
@@ -377,7 +394,7 @@ Main components
             top: 50%;
             height: 2px;
             width: 13px;
-            background: #cfdca0;
+            background: #68c1ff;
             -webkit-backface-visibility: hidden;
             backface-visibility: hidden;
             -moz-transition-property: -moz-transform;
@@ -405,39 +422,44 @@ Main components
             transform: rotate(-45deg);
         }
 
-    .content-visible .cd-faq-trigger::before {
-        -moz-transform: rotate(-45deg);
-        -ms-transform: rotate(-45deg);
-        -webkit-transform: rotate(-45deg);
-        transform: rotate(-45deg);
-    }
+        .content-visible .cd-faq-trigger::before {
+            -moz-transform: rotate(-45deg);
+            -ms-transform: rotate(-45deg);
+            -webkit-transform: rotate(-45deg);
+            transform: rotate(-45deg);
+            
+        }
 
-    .content-visible .cd-faq-trigger::after {
-        -moz-transform: rotate(45deg);
-        -ms-transform: rotate(45deg);
-        -webkit-transform: rotate(45deg);
-        transform: rotate(45deg);
-    }
+        .content-visible .cd-faq-trigger::after {
+            -moz-transform: rotate(45deg);
+            -ms-transform: rotate(45deg);
+            -webkit-transform: rotate(45deg);
+            transform: rotate(45deg);
+            
+        }
 }
 
 .cd-faq-content p {
     font-size: 14px;
     font-size: 0.875rem;
     line-height: 1.4;
-    color: #6c7d8e;
+    color: white;
 }
 
 @media only screen and (min-width: 768px) {
     .cd-faq-content {
         display: none;
         padding: 0 24px 30px;
+        background: linear-gradient(to bottom, #0c202d, #0d0d0d);
     }
 
         .cd-faq-content p {
             line-height: 1.6;
+
         }
 
     .no-js .cd-faq-content {
         display: block;
+        
     }
 }
