@@ -9,22 +9,19 @@ namespace Projet_Finale.Auth
 
         public static async Task<bool> ValidateSessionAsync(HttpContext context)
         {
-
-            string? sessionId = context.Request.Cookies["session_id"];
-            string? userAgent = context.Request.Headers["User-Agent"];
-            string? ipAddress = context.Connection?.RemoteIpAddress?.ToString();
-            
-            if (sessionId == null || userAgent == null || ipAddress == null)
+            SessionData session = new SessionData(context);
+            if (!session.IsValid)
             {
                 return false;
             }
 
             var requestData = new Dictionary<string, string>
             {
-                {"session_id", sessionId},
-                {"user_agent", userAgent},
-                {"ip_address", ipAddress}
+                {"session_id", session.SessionID},
+                {"user_agent", session.UserAgent},
+                {"ip_address", session.IpAddress}
             };
+
             var content = new StringContent(JsonConvert.SerializeObject(requestData), Encoding.UTF8, "application/json");
             HttpResponseMessage response = await httpClient.PostAsync("http://127.0.0.1:5000/validate_session", content);
 

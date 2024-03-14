@@ -1,4 +1,19 @@
-﻿<!DOCTYPE html>
+﻿@using Projet_Finale.Auth
+
+@{
+    bool isLoggedIn = await Auth.ValidateSessionAsync(Context);
+    bool isAdmin = false;
+    if (isLoggedIn)
+    {
+        isAdmin = await Auth.ValidatePermission(Context, "admin.manage");
+    }
+    if (!isLoggedIn && !string.IsNullOrEmpty(Context.Request.Cookies["session_id"]))
+    {
+        Context.Response.Cookies.Delete("session_id");
+    }
+}
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -23,7 +38,18 @@
         <a class="w3-button  w3-padding-large w3-margin-bottom" style="font-size:xx-large;" asp-controller="Home" asp-action="Vision">VISION</a>
         <a class="w3-button  w3-padding-large w3-margin-bottom" style="font-size:xx-large;" asp-controller="Boutique" asp-action="Boutique">BOUTIQUE</a>
         <a class="w3-button  w3-padding-large w3-margin-bottom" style="font-size:xx-large;" asp-controller="Home" asp-action="FAQ">FAQ</a>
-        <a class="w3-button  w3-padding-large w3-margin-bottom" style="font-size:xx-large;" asp-controller="Login" asp-action="Login">SE CONNECTER</a>
+        @if (isAdmin)
+        {
+            <a class="w3-button  w3-padding-large w3-margin-bottom" style="font-size:xx-large;" asp-controller="Admin" asp-action="ManageUser">GESTION</a>
+        }
+        @if (isLoggedIn)
+        {
+            <a class="w3-button w3-padding-large w3-margin-bottom" style="font-size:xx-large;" asp-controller="Login" asp-action="Disconnect">SE DÉCONNECTER</a>
+        }
+        else
+        {
+            <a class="w3-button w3-padding-large w3-margin-bottom" style="font-size:xx-large;" asp-controller="Login" asp-action="Login">SE CONNECTER</a>
+        }
     </header>
 
     <!DOCTYPE html>
