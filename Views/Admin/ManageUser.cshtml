@@ -2,6 +2,8 @@
 
 @{
     ViewBag.Title = "Gestion utilisateurs";
+    string? ipAddress = Context.Connection.RemoteIpAddress?.ToString();
+    string? sessionId = Context.Request.Cookies["session_id"];
 }
 <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
 
@@ -132,7 +134,7 @@
             $row.find(".edit-button").show();
             $row.find(".delete-button").show();
             
-            // Créez un objet avec les données de l'utilisateur à mettre à jour
+            // Créer un objet avec les données de l'utilisateur à mettre à jour
             var userData = {
                 user_id: $row.find(".id").text(),
                 username: $row.find("[data-field-name='Username']").text(),
@@ -140,7 +142,11 @@
                 role_name: $row.find(".role-dropdown").val()
             };
 
-            // Envoyez les données à la méthode update_user via AJAX
+            userData.session_id = "@sessionId";
+            userData.user_agent = navigator.userAgent;
+            userData.ip_address = "@ipAddress";
+
+            // Envoyer les données à la méthode update_user via AJAX
             $.ajax({
                 url: "http://127.0.0.1:5000/update_user",
                 type: "POST",
@@ -187,4 +193,5 @@
             }
         });
     });
+
 </script>
