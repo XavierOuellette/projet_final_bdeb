@@ -1,0 +1,22 @@
+﻿.features {
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.feature-item {
+    margin-bottom: 1rem;
+}
+
+.call-to-action {
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.call-to-action button {
+    padding: 1rem 2rem;
+    font-size: 1rem;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
