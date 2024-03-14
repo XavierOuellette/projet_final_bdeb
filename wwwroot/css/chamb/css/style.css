@@ -425,7 +425,7 @@ header .navbar-default .navbar-header {
 }
 
 .nav-box ul li a:hover {
-	color: #1e96ff;
+	color: #070d11cb;
 }
 
 /*------------------------------------------------------------- 
@@ -435,8 +435,8 @@ header .navbar-default .navbar-header {
 .page-content-product {}
 
 .main-product {
-	background-color: #09284b;
-	background-image: url('../images/bg_main.png');
+	background-color: rgba();
+	background-image: url('');
 	padding-bottom: 180px;
 	background-position: center center;
 }
@@ -600,7 +600,7 @@ header .navbar-default .navbar-header {
 }
 
 .box-img {
-	background: #051d36;
+	background-color: #070d11cb;
 	text-align: center;
 	padding-bottom: 30px;
 	min-height: 280px;
@@ -620,11 +620,11 @@ header .navbar-default .navbar-header {
 	letter-spacing: 0px;
 }
 
-.box-img:hover {
-	cursor: pointer;
-	transform: scale(1.1);
-	background: #007dea;
-}
+	.box-img:hover {
+		cursor: pointer;
+		transform: scale(1.1);
+		background: rgba(24,75,109,0.8);
+	}
 
 .food {
 	position: absolute;
