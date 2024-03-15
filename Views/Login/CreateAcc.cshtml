@@ -1,0 +1,49 @@
+﻿@model Projet_Finale.Models.Credentials
+<link rel="stylesheet" href="~/css/Login.css">
+<div class="container-fluid">
+    <div class="row justify-content-center align-items-center" style="height: 100vh;">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <img src="/images/LogoNew.PNG" alt="Logo" class="img-fluid mb-4" style="width: 50%; height: auto;">
+                    <h2 class="text-center mb-4">Créer un compte</h2>
+                    <form id="myForm" asp-action="CreateAcc" method="post">
+
+                        <div class="form-group">
+                            <label for="username">Nom d'utilisateur</label>
+                            <input asp-for="Username" class="form-control" id="username" />
+                            <span asp-validation-for="Username" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="password">Mot de passe</label>
+                            <input asp-for="Password" type="password" class="form-control" id="password" pattern="^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[!#$%^&*()-_+=])[A-Za-z\d!#$%^&*()-_+=]{8,25}$" required>
+                            <span asp-validation-for="Password" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="passwordValidate">Confirmer le mot de passe</label>
+                            <input asp-for="PasswordValidate" type="password" class="form-control" id="passwordValidate" required>
+                            <span asp-validation-for="PasswordValidate" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input asp-for="Email" type="email" class="form-control" id="email" />
+                            <span asp-validation-for="Email" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary btn-block btn-custom">Créer le compte</button>
+                        </div>
+                    </form>
+                    <div class="form-group">
+                        <p>Vous avez déjà un compte? <a href="~/Login/Login">Connectez-vous</a>.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="~/js/Login.js"></script>

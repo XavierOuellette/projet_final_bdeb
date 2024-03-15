@@ -1,0 +1,36 @@
+﻿.card {
+    background-color: #0c202d;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.card-body {
+    color: white;
+}
+
+.form-group label {
+    color: #68c1ff;
+}
+
+.form-group p {
+    color: white;
+}
+
+.btn-custom {
+    background-color: #68c1ff;
+}
+
+.custom-checkbox input[type="checkbox"] {
+    transform: scale(2); /* Augmenter la taille du checkbox */
+}
+
+
+#available-group {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#available-label {
+    margin-right: 20px; /* Espacement entre le label et le checkbox */
+}
