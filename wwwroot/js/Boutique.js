@@ -5,6 +5,10 @@
     const image = document.getElementById('Image').files[0];
     const available = document.getElementById('Available').checked;
 
+    // Récupérer les valeurs d'ipAddress et sessionId à partir des attributs de données
+    var sessionId = $("#productData").data("session-id");
+    var ipAddress = $("#productData").data("ip-address");
+
     const formData = new FormData();
     formData.append('name', name);
     formData.append('description', description);
@@ -20,13 +24,17 @@
         if (imageResponse.ok) {
             const imagePath = await imageResponse.text();
 
-            const productData = {
+            var productData = {
                 name: name,
                 description: description,
                 price: price,
                 image_path: imagePath,
                 available: available
             };
+
+            productData.session_id = sessionId;
+            productData.ip_address = ipAddress;
+            productData.user_agent = navigator.userAgent;
 
             const response = await fetch('http://127.0.0.1:5000/insert_item', {
                 method: 'POST',

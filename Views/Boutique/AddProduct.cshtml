@@ -1,5 +1,15 @@
 ﻿@model Projet_Finale.Models.Product
+@{
+    string? ipAddress = Context.Connection.RemoteIpAddress?.ToString();
+    string? sessionId = Context.Request.Cookies["session_id"];
+}
 <link rel="stylesheet" href="~/css/Login.css">
+
+<div id="productData"
+     data-session-id="@sessionId"
+     data-ip-address="@ipAddress"
+     style="display: none;">
+</div>
 <div class="container-fluid">
     <div class="row justify-content-center align-items-center" style="height: 100vh;">
         <div class="col-md-7">
