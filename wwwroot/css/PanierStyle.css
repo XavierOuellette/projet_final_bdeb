@@ -42,7 +42,7 @@ body {
     }
 .buttons {
     position: relative;
-    padding-top: 30px;
+    padding-top: 21px;
     margin-right: 60px;
 }
 
@@ -193,5 +193,10 @@ input:focus {
 
     .buttons {
         margin-right: 20px;
+    }
+
+    .panierBack {
+        width: 4rem;
+        height: 4rem;
     }
 }
