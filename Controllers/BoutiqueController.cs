@@ -20,6 +20,11 @@ namespace Projet_Finale.Controllers
             return View();
         }
 
+        public IActionResult Panier()
+        {
+            return View();
+        }
+
         private readonly IWebHostEnvironment _webHostEnvironment;
 
         public BoutiqueController(IWebHostEnvironment webHostEnvironment)
