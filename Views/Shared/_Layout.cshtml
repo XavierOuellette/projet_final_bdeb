@@ -1,13 +1,13 @@
 ﻿@using Projet_Finale.Auth
 
 @{
-    bool isLoggedIn = await Auth.ValidateSessionAsync(Context);
-    bool isAdmin = false;
-    if (isLoggedIn)
+    ViewBag.isLoggedIn = await Auth.ValidateSessionAsync(Context);
+    ViewBag.isAdmin = false;
+    if (ViewBag.isLoggedIn)
     {
-        isAdmin = await Auth.ValidatePermission(Context, "admin.manage");
+        ViewBag.isAdmin = await Auth.ValidatePermission(Context, "admin.manage");
     }
-    if (!isLoggedIn && !string.IsNullOrEmpty(Context.Request.Cookies["session_id"]))
+    if (!ViewBag.isLoggedIn && !string.IsNullOrEmpty(Context.Request.Cookies["session_id"]))
     {
         Context.Response.Cookies.Delete("session_id");
     }
@@ -44,11 +44,11 @@
         <a class="w3-button  w3-padding-large w3-margin-bottom" style="font-size:xx-large;" asp-controller="Home" asp-action="Vision">VISION</a>
         <a class="w3-button  w3-padding-large w3-margin-bottom" style="font-size:xx-large;" asp-controller="Boutique" asp-action="Boutique">BOUTIQUE</a>
         <a class="w3-button  w3-padding-large w3-margin-bottom" style="font-size:xx-large;" asp-controller="Home" asp-action="FAQ">FAQ</a>
-        @if (isAdmin)
+        @if (ViewBag.isAdmin)
         {
             <a class="w3-button  w3-padding-large w3-margin-bottom" style="font-size:xx-large;" asp-controller="Admin" asp-action="ManageUser">GESTION</a>
         }
-        @if (isLoggedIn)
+        @if (ViewBag.isLoggedIn)
         {
             <a class="w3-button w3-padding-large w3-margin-bottom" style="font-size:xx-large;" asp-controller="Login" asp-action="Disconnect">SE DÉCONNECTER</a>
         }
