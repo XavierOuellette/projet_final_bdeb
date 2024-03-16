@@ -1,4 +1,10 @@
-﻿@model Projet_Finale.Models.Product
+﻿@using Projet_Finale.Auth;
+
+@model Projet_Finale.Models.Product
+
+@{
+    SessionData session = Context.Items["SessionData"] as SessionData;
+}
 
 <link rel="stylesheet" href="~/css/Login.css">
 <script src="~/js/addProduct.js"></script>
