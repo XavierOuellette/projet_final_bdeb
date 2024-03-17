@@ -15,9 +15,8 @@ namespace Projet_Finale.Auth
             filterContext.HttpContext.Items["SessionData"] = new SessionData(filterContext.HttpContext);
         }
 
-        public static async Task<bool> ValidateSessionAsync(HttpContext context)
+        public static async Task<bool> ValidateSessionAsync(SessionData session)
         {
-            SessionData session = new SessionData(context);
             if (!session.IsValid)
             {
                 return false;

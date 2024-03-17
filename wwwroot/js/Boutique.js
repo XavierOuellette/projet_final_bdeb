@@ -6,8 +6,9 @@
     const available = document.getElementById('Available').checked;
 
     // Récupérer les valeurs d'ipAddress et sessionId à partir des attributs de données
-    var sessionId = $("#session").data("session-id");
-    var ipAddress = $("#session").data("ip-address");
+    var session = document.getElementById("session");
+    var sessionId = $("#session").attr("session-id");
+    var ipAddress = $("#session").attr("ip-address");
 
     const formData = new FormData();
     formData.append('name', name);
@@ -17,6 +18,7 @@
     formData.append('available', available);
 
     try {
+        debugger;
         const imageResponse = await fetch('/Boutique/UploadImage', {
             method: 'POST',
             body: formData
@@ -29,10 +31,13 @@
                 description: description,
                 price: price,
                 image_path: imagePath,
-                available: available
+                available: available,
+                session_id: sessionId,
+                ip_address: ipAddress,
+                user_agent: navigator.userAgent
             };
 
-            productData = addSessionAndUserAgentData(productData, sessionId, ipAddress);
+            console.log("Product Data:", productData);
 
             const response = await fetch('http://127.0.0.1:5000/insert_item', {
                 method: 'POST',
