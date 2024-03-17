@@ -26,70 +26,70 @@
 
 </head>
 
-<body>
+    <body>
 
-    <div class="w3-bar w3-black w3-hide-small">
-        <a href="#" class="w3-bar-item w3-button"><i class="fa fa-facebook-official"></i></a>
-        <a href="#" class="w3-bar-item w3-button"><i class="fa fa-instagram"></i></a>
-        <a href="#" class="w3-bar-item w3-button"><i class="fa fa-snapchat"></i></a>
-        <a href="#" class="w3-bar-item w3-button"><i class="fa fa-flickr"></i></a>
-        <a href="#" class="w3-bar-item w3-button"><i class="fa fa-twitter"></i></a>
-        <a href="#" class="w3-bar-item w3-button"><i class="fa fa-linkedin"></i></a>
-        <a href="#" class="w3-bar-item w3-button w3-right"><i class="fa fa-search"></i></a>
-    </div>
+        <div class="w3-bar w3-black w3-hide-small">
+            <a href="#" class="w3-bar-item w3-button"><i class="fa fa-facebook-official"></i></a>
+            <a href="#" class="w3-bar-item w3-button"><i class="fa fa-instagram"></i></a>
+            <a href="#" class="w3-bar-item w3-button"><i class="fa fa-snapchat"></i></a>
+            <a href="#" class="w3-bar-item w3-button"><i class="fa fa-flickr"></i></a>
+            <a href="#" class="w3-bar-item w3-button"><i class="fa fa-twitter"></i></a>
+            <a href="#" class="w3-bar-item w3-button"><i class="fa fa-linkedin"></i></a>
+            <a href="#" class="w3-bar-item w3-button w3-right"><i class="fa fa-search"></i></a>
+        </div>
 
-    <header class="w3-container w3-center w3-padding-30">
-        <a class="w3-button" style="width: 10%;" asp-controller="Home" asp-action="Index">
-            <img src="/images/LogoNew.png" style="width: 100%; height: 100% ">
-        </a>
-        <a class="w3-button  w3-padding-large w3-margin-bottom" style="font-size:xx-large;" asp-controller="Home" asp-action="Index">ACCUEIL</a>
-        <a class="w3-button  w3-padding-large w3-margin-bottom" style="font-size:xx-large;" asp-controller="Home" asp-action="Vision">VISION</a>
-        <a class="w3-button  w3-padding-large w3-margin-bottom" style="font-size:xx-large;" asp-controller="Boutique" asp-action="Boutique">BOUTIQUE</a>
-        <a class="w3-button  w3-padding-large w3-margin-bottom" style="font-size:xx-large;" asp-controller="Home" asp-action="FAQ">FAQ</a>
-        @if (session.IsAdmin)
-        {
-            <a class="w3-button  w3-padding-large w3-margin-bottom" style="font-size:xx-large;" asp-controller="Admin" asp-action="ManageUser">GESTION</a>
-        }
-        @if (session.IsLoggedIn)
-        {
-            <a class="w3-button w3-padding-large w3-margin-bottom" style="font-size:xx-large;" asp-controller="Login" asp-action="Disconnect">SE DÉCONNECTER</a>
-        }
-        else
-        {
-            <a class="w3-button w3-padding-large w3-margin-bottom" style="font-size:xx-large;" asp-controller="Login" asp-action="Login">SE CONNECTER</a>
-        }
+        <header class="w3-container w3-center w3-padding-30">
+            <a class="w3-button" style="width: 10%;" asp-controller="Home" asp-action="Index">
+                <img src="/images/LogoNew.png" style="width: 100%; height: 100% ">
+            </a>
+            <a class="w3-button  w3-padding-large w3-margin-bottom" style="font-size:xx-large;" asp-controller="Home" asp-action="Index">ACCUEIL</a>
+            <a class="w3-button  w3-padding-large w3-margin-bottom" style="font-size:xx-large;" asp-controller="Home" asp-action="Vision">VISION</a>
+            <a class="w3-button  w3-padding-large w3-margin-bottom" style="font-size:xx-large;" asp-controller="Boutique" asp-action="Boutique">BOUTIQUE</a>
+            <a class="w3-button  w3-padding-large w3-margin-bottom" style="font-size:xx-large;" asp-controller="Home" asp-action="FAQ">FAQ</a>
+            @if (session.IsAdmin)
+            {
+                <a class="w3-button  w3-padding-large w3-margin-bottom" style="font-size:xx-large;" asp-controller="Admin" asp-action="ManageUser">GESTION</a>
+            }
+            @if (session.IsLoggedIn)
+            {
+                <a class="w3-button w3-padding-large w3-margin-bottom" style="font-size:xx-large;" asp-controller="Login" asp-action="Disconnect">SE DÉCONNECTER</a>
+            }
+            else
+            {
+                <a class="w3-button w3-padding-large w3-margin-bottom" style="font-size:xx-large;" asp-controller="Login" asp-action="Login">SE CONNECTER</a>
+            }
 
-        <!--!!À CACHER si l'utilisateur n'est pas connecter-->
-        <a class="" style="height:5rem;width:5rem;" asp-controller="Boutique" asp-action="Panier">
+            <!--!!À CACHER si l'utilisateur n'est pas connecter-->
+            <a class="" style="height:5rem;width:5rem;" asp-controller="Boutique" asp-action="Panier">
 
-            <img src="/images/shoppingcart.png" style="height:5rem;width:5rem;margin-bottom:16px">
-        </a>
-    </header>
-    <div>
+                <img src="/images/shoppingcart.png" style="height:5rem;width:5rem;margin-bottom:16px">
+            </a>
+        </header>
+        <div>
 
-        <div style="background-color: #0f1b23cb; justify-content: center; display: flex;">
-            <div style="max-width: 80%; text-align: center; font-size: x-large; font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; padding-bottom: 5rem;">
-                <div class="container">
-                    <main role="main" class="pb-3">
-                        @RenderBody()
-                    </main>
+            <div style="background-color: #0f1b23cb; justify-content: center; display: flex;">
+                <div style="max-width: 80%; text-align: center; font-size: x-large; font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; padding-bottom: 5rem;">
+                    <div class="container">
+                        <main role="main" class="pb-3">
+                            @RenderBody()
+                        </main>
+                    </div>
+
+
                 </div>
-
-
             </div>
         </div>
-    </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2024 - Projet_Finale - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </div>
-    </footer>
+        <footer class="border-top footer text-muted">
+            <div class="container">
+                &copy; 2024 - Projet_Finale - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            </div>
+        </footer>
 
-    <div id="session"
-         s
+    <div id="session" ip-address="@session.IpAddress" session="@session.UserAgent"></div>
 
-</body>
+
+    </body>
 
 </html>
 
