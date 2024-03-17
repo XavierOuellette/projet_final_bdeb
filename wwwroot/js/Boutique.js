@@ -122,6 +122,9 @@ async function loadProducts() {
 
             // Ajouter un gestionnaire d'événements pour le bouton delete
             $(document).ready(function () {
+                var sessionId = $("#productData").data("session-id");
+                var ipAddress = $("#productData").data("ip-address");
+
                 // Ajouter un gestionnaire d'événements pour le bouton delete
                 console.log(1)
                 $(".delete-button").on("click", function (event) {
