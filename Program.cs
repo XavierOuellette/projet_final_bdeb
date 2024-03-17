@@ -1,3 +1,5 @@
+using Projet_Finale.Auth;
+
 namespace Projet_Finale
 {
     public class Program
@@ -7,7 +9,7 @@ namespace Projet_Finale
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
-            builder.Services.AddControllersWithViews();
+            builder.Services.AddControllersWithViews().AddGlobalFilter<Auth.Auth>();
 
             var app = builder.Build();
 

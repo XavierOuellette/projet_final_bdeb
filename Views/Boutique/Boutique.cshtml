@@ -1,7 +1,6 @@
-﻿@model Projet_Finale.Models.Product
+﻿@using Projet_Finale.Auth;
 @{
-    string? ipAddress = Context.Connection.RemoteIpAddress?.ToString();
-    string? sessionId = Context.Request.Cookies["session_id"];
+    SessionData session = Context.Items["SessionData"] as SessionData;
 }
 
 <head>
@@ -47,7 +46,11 @@
                             </div>
                             <div class="col-sm-3">
                                 <div class="form-sh d-flex justify-content-between">
-                                    <a class="btn" href="~/Boutique/AddProduct"><i class="fa fa-plus"></i></a>
+                                    @if (session.IsAdmin)
+                                    {
+                                        <a class="btn" href="~/Boutique/AddProduct"><i class="fa fa-plus"></i></a>
+                                    }
+                                    
                                     <a class="btn" href="#">Search</a>
                                 </div>
                             </div>

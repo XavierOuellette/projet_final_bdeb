@@ -6,8 +6,8 @@
     const available = document.getElementById('Available').checked;
 
     // Récupérer les valeurs d'ipAddress et sessionId à partir des attributs de données
-    var sessionId = $("#productData").data("session-id");
-    var ipAddress = $("#productData").data("ip-address");
+    var sessionId = $("#session").data("session-id");
+    var ipAddress = $("#session").data("ip-address");
 
     const formData = new FormData();
     formData.append('name', name);
