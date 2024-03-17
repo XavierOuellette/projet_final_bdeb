@@ -16,20 +16,18 @@
             UserAgent = context.Request.Headers["User-Agent"];
             IpAddress = context.Connection?.RemoteIpAddress?.ToString();
             IsValid = (SessionID != null && UserAgent != null && IpAddress != null);
-            IsLoggedIn = SessionID != null;
-            if (IsValid)
-            {
-                InitAsync(context).Wait();
-            }
-            else
-            {
-                IsAdmin = false;
-            }
+            IsLoggedIn = false;
+            IsAdmin = false;
+            InitAsync(context).Wait();
         }
 
         private async Task InitAsync(HttpContext context)
         {
-            IsAdmin = await Auth.ValidatePermission(context, "admin.manage");
+            IsLoggedIn = await Auth.ValidateSessionAsync(this);
+            if(IsLoggedIn)
+            {
+                IsAdmin = await Auth.ValidatePermission(context, "admin.manage");
+            }
         }
     }
 }

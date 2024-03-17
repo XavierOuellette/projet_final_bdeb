@@ -1,5 +1,4 @@
 ﻿@using Projet_Finale.Auth
-
 @{
     SessionData session = Context.Items["SessionData"] as SessionData;
     if(!session.IsValid){
@@ -26,7 +25,6 @@
 </head>
 
 <body>
-
     <div class="w3-bar w3-black w3-hide-small">
         <a href="#" class="w3-bar-item w3-button"><i class="fa fa-facebook-official"></i></a>
         <a href="#" class="w3-bar-item w3-button"><i class="fa fa-instagram"></i></a>
@@ -84,7 +82,10 @@
             &copy; 2024 - Projet_Finale - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
     </footer>
-
+    <div id="session" 
+        ip-address="@session.IpAddress" 
+        session-id="@session.SessionID"
+    </div>
 </body>
     
 </html>

@@ -62,8 +62,9 @@
         });
 
         // Récupérer les valeurs d'ipAddress et sessionId à partir des attributs de données
-        var sessionId = $("#userData").data("session-id");
-        var ipAddress = $("#userData").data("ip-address");
+        var session = document.getElementById("session");
+        var sessionId = session.getAttribute("session-id");
+        var ipAddress = session.getAttribute("ip-address");
 
         $(".confirm-button").click(function () {
 
