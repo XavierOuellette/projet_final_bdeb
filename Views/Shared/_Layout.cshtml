@@ -1,7 +1,7 @@
 ﻿@using Projet_Finale.Auth
 @{
     SessionData session = Context.Items["SessionData"] as SessionData;
-    if(!session.IsValid){
+    if(!session.IsLoggedIn){
         Context.Response.Cookies.Delete("session_id");
     }
 }
