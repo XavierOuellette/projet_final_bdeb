@@ -118,9 +118,9 @@
 
             var userData = {
                 user_id: $row.find(".id").text(),
-                session_id: "@sessionId",
+                session_id: sessionId,
                 user_agent: navigator.userAgent,
-                ip_address: "@ipAddress"
+                ip_address: ipAddress
             }
             // Confirmation de suppression de l'utilisateur
             if (confirm("Êtes-vous sûr de vouloir supprimer cet utilisateur ?")) {
