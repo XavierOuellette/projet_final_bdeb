@@ -1,17 +1,7 @@
 ﻿@using Projet_Finale.Auth;
 
-@using Projet_Finale.Auth;
-@{
-    SessionData session = Context.Items["SessionData"] as SessionData;
-}
-
 <link rel="stylesheet" href="~/css/Login.css">
 
-<div id="productData"
-     data-session-id="@session.SessionID"
-     data-ip-address="@session.IpAddress"
-     style="display: none;">
-</div>
 <div class="container-fluid">
     <div class="row justify-content-center align-items-center" style="height: 100vh;">
         <div class="col-md-7">
