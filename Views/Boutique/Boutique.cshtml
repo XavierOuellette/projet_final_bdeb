@@ -1,4 +1,9 @@
-﻿<head>
+﻿@using Projet_Finale.Auth;
+@{
+    SessionData session = Context.Items["SessionData"] as SessionData;
+}
+
+<head>
     <meta charset="UTF-8">
     <title>Chamb - Responsive E-commerce HTML5 Template</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -37,7 +42,11 @@
                             </div>
                             <div class="col-sm-3">
                                 <div class="form-sh d-flex justify-content-between">
-                                    <a class="btn" href="~/Boutique/AddProduct"><i class="fa fa-plus"></i></a>
+                                    @if (session.IsAdmin)
+                                    {
+                                        <a class="btn" href="~/Boutique/AddProduct"><i class="fa fa-plus"></i></a>
+                                    }
+                                    
                                     <a class="btn" href="#">Search</a>
                                 </div>
                             </div>

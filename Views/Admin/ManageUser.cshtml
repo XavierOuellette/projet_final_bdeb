@@ -1,16 +1,14 @@
 ﻿@model List<User>
-
+@using Projet_Finale.Auth;
 @{
-    ViewBag.Title = "Gestion utilisateurs";
-    string? ipAddress = Context.Connection.RemoteIpAddress?.ToString();
-    string? sessionId = Context.Request.Cookies["session_id"];
+    SessionData session = Context.Items["SessionData"] as SessionData;
 }
 <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
 
 <h2>Gestion Utilisateurs</h2>
 <div id="userData"
-     data-session-id="@sessionId"
-     data-ip-address="@ipAddress"
+     data-session-id="@session.SessionID"
+     data-ip-address="@session.IpAddress"
      style="display: none;">
  </div>
 <table class="table">
