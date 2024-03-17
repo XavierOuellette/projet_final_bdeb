@@ -5,11 +5,6 @@
     const image = document.getElementById('Image').files[0];
     const available = document.getElementById('Available').checked;
 
-    // Récupérer les valeurs d'ipAddress et sessionId à partir des attributs de données
-    var session = document.getElementById("session");
-    var sessionId = $("#session").attr("session-id");
-    var ipAddress = $("#session").attr("ip-address");
-
     const formData = new FormData();
     formData.append('name', name);
     formData.append('description', description);
@@ -32,10 +27,9 @@
                 price: price,
                 image_path: imagePath,
                 available: available,
-                session_id: sessionId,
-                ip_address: ipAddress,
-                user_agent: navigator.userAgent
+                
             };
+            productData = addSessionAndUserAgentData(productData);
 
             console.log("Product Data:", productData);
 
@@ -61,11 +55,15 @@
     }
 }
 
-function addSessionAndUserAgentData(productData, sessionId, ipAddress) {
-    productData.session_id = sessionId;
-    productData.ip_address = ipAddress;
-    productData.user_agent = navigator.userAgent;
-    return productData;
+function addSessionAndUserAgentData(data) {
+    // Récupérer les valeurs d'ipAddress et sessionId à partir des attributs de données
+    var session = document.getElementById("session");
+    var sessionId = $("#session").attr("session-id");
+    var ipAddress = $("#session").attr("ip-address");
+    data.session_id = sessionId;
+    data.ip_address = ipAddress;
+    data.user_agent = navigator.userAgent;
+    return data;
 }
 
 function convertCentsToDollars(priceInCents) {
@@ -86,7 +84,7 @@ async function loadProducts() {
             const productDiv = document.createElement('div');
             productDiv.classList.add('col-lg-3', 'col-sm-6', 'col-md-3', 'productDiv');
             productDiv.innerHTML = `
-                            <div class="box-img">
+                            <div class="box-img" item-id = "${item.id}">
                                 <h4>${item.name}</h4>
                                 <img src="${item.image_path}" alt="${item.name}" style="width:108px; height:112px;" />
                                 <div class="price-available">
@@ -127,31 +125,26 @@ async function loadProducts() {
 
             // Ajouter un gestionnaire d'événements pour le bouton delete
             $(document).ready(function () {
-                var sessionId = $("#productData").data("session-id");
-                var ipAddress = $("#productData").data("ip-address");
-
-                // Ajouter un gestionnaire d'événements pour le bouton delete
-                console.log(1)
-                $(".delete-button").on("click", function (event) {
+                // Détacher tout d'abord les gestionnaires d'événements pour éviter les attachements multiples
+                $(".delete-button").off("click").on("click", function (event) {
                     event.stopPropagation(); // Arrêter la propagation de l'événement de clic
-                    console.log(2)
+
                     if (confirm("Êtes-vous sûr de vouloir supprimer cet élément ?")) {
-                        console.log(3)
                         // Récupérer l'ID de l'élément à partir des données de l'élément lui-même
-                        var itemId = $(this).closest('.box-img').data('item-id');
-                        console.log(itemId)
+                        var itemId = $(this).closest('.box-img').attr('item-id');
+
                         // Créer un objet avec les données nécessaires
                         var productData = {
-                            id: itemId,
+                            id: itemId
                         };
-                        productData = addSessionAndUserAgentData(productData, sessionId, ipAddress);
-                        console.log(itemData)
+                        productData = addSessionAndUserAgentData(productData);
+
                         // Envoyer les données à la méthode delete_item via AJAX
                         $.ajax({
                             url: "http://127.0.0.1:5000/delete_item",
                             type: "DELETE",
                             contentType: "application/json",
-                            data: JSON.stringify(itemData),
+                            data: JSON.stringify(productData),
                             success: function (response) {
                                 // Traiter la réponse de suppression réussie
                                 alert(response.message);
@@ -166,6 +159,7 @@ async function loadProducts() {
                     }
                 });
             });
+
             productsContainer.appendChild(productDiv);
         });
     } catch (error) {
