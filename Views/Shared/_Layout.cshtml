@@ -2,7 +2,8 @@
 
 @{
     SessionData session = Context.Items["SessionData"] as SessionData;
-    if(!session.IsValid){
+    if (!session.IsValid)
+    {
         Context.Response.Cookies.Delete("session_id");
     }
 }
@@ -63,21 +64,21 @@
 
             <img src="/images/shoppingcart.png" style="height:5rem;width:5rem;margin-bottom:16px">
         </a>
-    </header>  
-        <div>
+    </header>
+    <div>
 
-            <div style="background-color: #0f1b23cb; justify-content: center; display: flex;">
-                <div style="max-width: 80%; text-align: center; font-size: x-large; font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; padding-bottom: 5rem;">
-                    <div class="container">
-                        <main role="main" class="pb-3">
-                            @RenderBody()
-                        </main>
-                    </div>
-                    
-           
+        <div style="background-color: #0f1b23cb; justify-content: center; display: flex;">
+            <div style="max-width: 80%; text-align: center; font-size: x-large; font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; padding-bottom: 5rem;">
+                <div class="container">
+                    <main role="main" class="pb-3">
+                        @RenderBody()
+                    </main>
                 </div>
+
+
             </div>
         </div>
+    </div>
 
     <footer class="border-top footer text-muted">
         <div class="container">
@@ -85,8 +86,11 @@
         </div>
     </footer>
 
+    <div id="session"
+         s
+
 </body>
-    
+
 </html>
 
 <script src="~/lib/jquery/dist/jquery.min.js"></script>
