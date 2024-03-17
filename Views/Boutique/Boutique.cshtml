@@ -1,4 +1,14 @@
-﻿<head>
+﻿@model Projet_Finale.Models.Product
+@{
+    string? ipAddress = Context.Connection.RemoteIpAddress?.ToString();
+    string? sessionId = Context.Request.Cookies["session_id"];
+}
+<div id="productData"
+     data-session-id="@sessionId"
+     data-ip-address="@ipAddress"
+     style="display: none;">
+</div>
+<head>
     <meta charset="UTF-8">
     <title>Chamb - Responsive E-commerce HTML5 Template</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -19,10 +29,9 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="~/css/bouton.css">
     <link rel="stylesheet" href="~/css/site.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
 </head>
 <body>
-    <!-- Modal -->
-    
     <div class="page-content-product">
         <div class="main-product">
             <div class="container">
@@ -60,4 +69,14 @@
     <!--Item js-->
     <script src="~/js/Boutique.js"></script>
 </body>
+<style>
+    /* Styles pour les icônes de crayon */
+    .edit-button .bi-pencil {
+        color: blue; /* Couleur de l'icône de crayon */
+    }
 
+    /* Styles pour les icônes de poubelle */
+    .delete-button .bi-trash {
+        color: red; /* Couleur de l'icône de poubelle */
+    }
+</style>
