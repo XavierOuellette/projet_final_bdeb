@@ -73,7 +73,7 @@ function convertCentsToDollars(priceInCents) {
     return (priceInCents / 100).toFixed(2);
 }
 
-function onDelete(event) {
+function deleteProduct(event) {
     event.stopPropagation(); // Arrêter la propagation de l'événement de clic
 
     const target = event.currentTarget;
