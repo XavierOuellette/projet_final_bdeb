@@ -63,7 +63,7 @@
                 <div class="row clearfix" id="productsContainer">
                     @foreach (var product in Model)
                     {
-                        <div class="box-img col-lg-3 col-sm-6 col-md-3 productDiv" item-id="@product.Id" style="margin-left: 15px; margin-right: 15px;">
+                        <div class="box-img col-lg-3 col-sm-6 col-md-3 productDiv" item-id="@product.Id" style="margin-left: 15px; margin-right: 15px;" onclick="onClickSlide(event)">
                             <h4>@product.Name</h4>
                             <img src="@product.Image_Path" alt="@product.Name" style="width:108px; height:112px;" />
                             <div class="price-available">
@@ -106,4 +106,3 @@
     <!--Item js-->
     <script src="~/js/Boutique.js"></script>
 </body>
-

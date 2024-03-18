@@ -25,7 +25,7 @@ body {
     color: green;
 }
 
-.availability.False {
+.availability.false {
     color: red;
 }
 
