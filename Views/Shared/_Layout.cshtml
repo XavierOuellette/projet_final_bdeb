@@ -50,17 +50,14 @@
             @if (session.IsLoggedIn)
             {
                 <a class="w3-button w3-padding-large w3-margin-bottom" style="font-size:xx-large;" asp-controller="Login" asp-action="Disconnect">SE DÉCONNECTER</a>
+                <a class="" style="height:5rem;width:5rem;" asp-controller="Boutique" asp-action="Panier">
+                <img src="/images/shoppingcart.png" style="height:5rem;width:5rem;margin-bottom:16px"></a>
             }
             else
             {
                 <a class="w3-button w3-padding-large w3-margin-bottom" style="font-size:xx-large;" asp-controller="Login" asp-action="Login">SE CONNECTER</a>
             }
-
-            <!--!!À CACHER si l'utilisateur n'est pas connecter-->
-            <a class="" style="height:5rem;width:5rem;" asp-controller="Boutique" asp-action="Panier">
-
-                <img src="/images/shoppingcart.png" style="height:5rem;width:5rem;margin-bottom:16px">
-            </a>
+          
         </header>
         <div>
 
@@ -71,8 +68,6 @@
                             @RenderBody()
                         </main>
                     </div>
-
-
                 </div>
             </div>
         </div>
