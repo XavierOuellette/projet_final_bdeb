@@ -1,4 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
+using Projet_Finale.Auth;
 using Projet_Finale.Models;
 using System;
 using System.IO;
@@ -11,9 +14,27 @@ namespace Projet_Finale.Controllers
 {
     public class BoutiqueController : Controller
     {
-        public IActionResult Boutique()
+        private readonly HttpClient _httpClient;
+        private readonly IWebHostEnvironment _webHostEnvironment;
+
+        public BoutiqueController(IWebHostEnvironment webHostEnvironment)
         {
-            return View();
+            _webHostEnvironment = webHostEnvironment;
+            _httpClient = new HttpClient();
+            _httpClient.BaseAddress = new Uri("http://127.0.0.1:5000");
+        }
+
+        public async Task<ActionResult> Boutique()
+        {
+            SessionData session = new SessionData(HttpContext);
+            var response = await _httpClient.GetAsync($"/all_items?session_id={session.SessionID}&user_agent={session.UserAgent}&ip_address={session.IpAddress}");
+            if (response.IsSuccessStatusCode)
+            {
+                var content = await response.Content.ReadAsStringAsync();
+                var itemList = JsonConvert.DeserializeObject<ProductList>(content);
+                return View(itemList.Products);
+            }
+            return View(null);
         }
         public IActionResult AddProduct()
         {
@@ -23,13 +44,6 @@ namespace Projet_Finale.Controllers
         public IActionResult Panier()
         {
             return View();
-        }
-
-        private readonly IWebHostEnvironment _webHostEnvironment;
-
-        public BoutiqueController(IWebHostEnvironment webHostEnvironment)
-        {
-            _webHostEnvironment = webHostEnvironment;
         }
 
         // Méthode pour télécharger l'image
