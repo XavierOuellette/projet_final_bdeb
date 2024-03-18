@@ -21,11 +21,11 @@ body {
   margin-bottom: 60px;
 }
 
-.availability.available {
+.availability.true {
     color: green;
 }
 
-.availability.unavailable {
+.availability.false {
     color: red;
 }
 

@@ -1,6 +1,13 @@
 ﻿@using Projet_Finale.Auth;
+@model List<Product>
 @{
     SessionData session = Context.Items["SessionData"] as SessionData;
+}
+
+@functions{
+    public String convertCentsToDollars(int price){
+        return (price / 100).ToString("0.00");
+    }
 }
 
 <head>
@@ -52,7 +59,38 @@
                         </div>
                     </div>
                 </div>
-                <div class="row clearfix" id="productsContainer"></div>
+
+                <div class="row clearfix" id="productsContainer">
+                    @foreach (var product in Model)
+                    {
+                        <div class="box-img col-lg-3 col-sm-6 col-md-3 productDiv" item-id="@product.Id" style="margin-left: 15px; margin-right: 15px;">
+                            <h4>@product.Name</h4>
+                            <img src="@product.Image_Path" alt="@product.Name" style="width:108px; height:112px;" />
+                            <div class="price-available">
+                                <br>
+                                <span class="price">@convertCentsToDollars(product.Price) $</span>
+                                <br>
+                                <span class="availability @product.Available">@(product.Available ? "Disponible" : "Indisponible")</span>
+                                <div class="description" style="display: none;">
+                                    <br>
+                                    @product.Description
+                                </div>
+                                <br>
+
+                                @if (session.IsAdmin)
+                                {
+                                    <button class="edit-button" style="display: none;">
+                                        <i class="bi bi-pencil"></i>
+                                    </button>
+                                    <button class="delete-button" style="display: none;">
+                                        <i class="bi bi-trash"></i>
+                                    </button>
+                                }
+                                
+                            </div>
+                        </div>
+                    }
+                </div>
             </div>
         </div>
     </div>
