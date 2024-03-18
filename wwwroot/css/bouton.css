@@ -36,9 +36,19 @@
     }
 
 .form-sh .btn {
-    margin-right: 20px; /* Ajoute une marge à droite pour séparer les boutons */
+    margin-right: 20px;
 }
 
 .form-sh {
-    margin-left: 65px; /* Ajoute une marge à gauche pour déplacer les boutons vers la droite */
+    margin-left: 65px;
+}
+
+
+.edit-button .bi-pencil {
+    color: blue;
+}
+
+
+.delete-button .bi-trash {
+    color: red;
 }

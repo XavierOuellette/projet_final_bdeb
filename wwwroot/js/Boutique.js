@@ -131,7 +131,6 @@ async function loadProducts() {
                                     }
                                 });
                             }
-
                         },
                         error: function (xhr, status, error) {
                             // Gérer les erreurs de suppression
