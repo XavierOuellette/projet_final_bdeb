@@ -87,18 +87,20 @@ async function loadProducts() {
 
                 if (descriptionDiv.style.display === 'none') {
                     $(descriptionDiv).slideDown();
-                    $(editButton).slideDown();
-                    $(deleteButton).slideDown();
+                    if (editButton) $(editButton).slideDown();
+                    if (deleteButton) $(deleteButton).slideDown();
                 } else {
                     $(descriptionDiv).slideUp();
-                    $(editButton).slideUp();
-                    $(deleteButton).slideUp();
+                    if (editButton) $(editButton).slideUp();
+                    if (deleteButton) $(deleteButton).slideUp();
                 }
             }
 
             // Ajouter un gestionnaire d'événements pour le bouton delete
             const deleteButton = product.querySelector('.delete-button');
-             deleteButton.addEventListener('click', function (event) {
+
+            if (deleteButton) {
+                deleteButton.addEventListener('click', function (event) {
                 event.stopPropagation(); // Arrêter la propagation de l'événement de clic
 
                 if (confirm("Êtes-vous sûr de vouloir supprimer cet élément ?")) {
@@ -140,6 +142,8 @@ async function loadProducts() {
                     });
                 }
             });
+            }
+             
         });
     } catch (error) {
         console.error('Erreur lors du chargement des produits :', error);
