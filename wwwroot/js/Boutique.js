@@ -116,21 +116,40 @@ function deleteProduct(event) {
 }
 
 function onClickSlide(event) {
-    elem = event.currentTarget;
-    const descriptionDiv = elem.querySelector('.description');
-    const editButton = elem.querySelector('.edit-button');
-    const deleteButton = elem.querySelector('.delete-button');
+    const productsContainer = document.getElementById('productsContainer');
+    const productDivs = productsContainer.querySelectorAll('.productDiv');
 
-    if (descriptionDiv.style.display === 'none') {
-        $(descriptionDiv).slideDown();
-        if (editButton) $(editButton).slideDown();
-        if (deleteButton) $(deleteButton).slideDown();
-    } else {
-        $(descriptionDiv).slideUp();
-        if (editButton) $(editButton).slideUp();
-        if (deleteButton) $(deleteButton).slideUp();
+    // Vérifier si au moins un élément est étendu
+    const isAnyExpanded = Array.from(productDivs).some(productDiv => productDiv.classList.contains('expanded'));
+
+    // Si au moins un élément est étendu, alors réduire tous les éléments
+    if (isAnyExpanded) {
+        productDivs.forEach(productDiv => {
+            const descriptionDiv = productDiv.querySelector('.description');
+            const editButton = productDiv.querySelector('.edit-button');
+            const deleteButton = productDiv.querySelector('.delete-button');
+
+            $(descriptionDiv).slideUp();
+            if (editButton) $(editButton).slideUp();
+            if (deleteButton) $(deleteButton).slideUp();
+
+            productDiv.classList.remove('expanded');
+        });
+    } else { // Sinon, étendre tous les éléments
+        productDivs.forEach(productDiv => {
+            const descriptionDiv = productDiv.querySelector('.description');
+            const editButton = productDiv.querySelector('.edit-button');
+            const deleteButton = productDiv.querySelector('.delete-button');
+
+            $(descriptionDiv).slideDown();
+            if (editButton) $(editButton).slideDown();
+            if (deleteButton) $(deleteButton).slideDown();
+
+            productDiv.classList.add('expanded');
+        });
     }
 }
+
 
 
 function searchChanged(event) {
