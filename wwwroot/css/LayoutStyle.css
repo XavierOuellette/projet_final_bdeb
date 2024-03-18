@@ -1,0 +1,33 @@
+﻿h1, h2, h3, h4, h5, h6 {
+    font-family: "Oswald"
+}
+
+body {
+    font-family: "Open Sans";
+    color: white !important;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background: url('/images/forest.jpg') center/cover no-repeat; /* Set the background image for the body */
+    background-color: #0f1b23c4; /* Fallback background color */
+}
+
+header {
+    background: linear-gradient(to bottom, rgba(24, 75, 109, 0.8), #070d11cb);
+    padding: 48px;
+    text-align: center;
+}
+
+.w3-button {
+    color: white; /* Set text color for buttons */
+}
+
+.w3-button:hover {
+        background-color: rgba(12,32,45,0.5) !important;
+        border-radius: 25px;
+        color: #68c1ff !important;
+}
+
+

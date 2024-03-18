@@ -1,36 +1,55 @@
-﻿    .button {
-        background-color: #424549;
-        border-radius: 10px;
-        padding: 10px;
-        width: 200px;
-        text-align: center;
-        transition: all 0.3s ease;
-    }
+﻿.button {
+    background-color: #424549;
+    border-radius: 10px;
+    padding: 10px;
+    width: 200px;
+    text-align: center;
+    transition: all 0.3s ease;
+}
 
-    .button:hover {
-        background-color: #2d2e30;
-    }
+.button:hover {
+    background-color: #2d2e30;
+}
 
-    .button img {
-        height: 50px;
-        width: 100px;
-        margin-bottom: 10px;
-    }
+.button img {
+    height: 50px;
+    width: 100px;
+    margin-bottom: 10px;
+}
 
-    .button p {
-        color: #7289da;
+.button p {
+    color: #7289da;
+    font-size: 16px;
+    margin: 0;
+}
+
+.button.white p {
+        color: #ffffff;
         font-size: 16px;
         margin: 0;
-    }
+}
+.button.white {
+    background-color: #FF7100;
+}
 
-    .button.white {
-        background-color: #FF7100;
-    }
+.button.white:hover {
+    background-color: #e65c00;
+}
 
-    .button.white:hover {
-        background-color: #e65c00;
-    }
+.form-sh .btn {
+margin-right: 20px;
+}
 
-    .button.white p {
-        color: white;
-    }
+.form-sh {
+margin-left: 65px;
+}
+
+
+.edit-button .bi-pencil {
+color: blue;
+}
+
+
+.delete-button .bi-trash {
+color: red;
+}

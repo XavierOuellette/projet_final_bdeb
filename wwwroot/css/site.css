@@ -21,3 +21,11 @@ body {
   margin-bottom: 60px;
 }
 
+.availability.True {
+    color: green;
+}
+
+.availability.False {
+    color: red;
+}
+

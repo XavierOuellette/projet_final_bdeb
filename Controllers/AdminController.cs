@@ -2,8 +2,6 @@
 using Newtonsoft.Json;
 using Projet_Finale.Auth;
 using Projet_Finale.Models;
-using System.Net.Http;
-using System.Security;
 
 namespace Projet_Finale.Controllers
 {
