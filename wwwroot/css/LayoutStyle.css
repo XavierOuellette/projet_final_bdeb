@@ -1,5 +1,4 @@
-﻿<style >
-h1, h2, h3, h4, h5, h6 {
+﻿h1, h2, h3, h4, h5, h6 {
     font-family: "Oswald"
 }
 
@@ -25,10 +24,10 @@ header {
     color: white; /* Set text color for buttons */
 }
 
-    .w3-button:hover {
+.w3-button:hover {
         background-color: rgba(12,32,45,0.5) !important;
         border-radius: 25px;
         color: #68c1ff !important;
-    }
+}
 
-</style >
+

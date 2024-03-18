@@ -43,6 +43,8 @@
 
             if (response.ok) {
                 alert('Produit ajouté avec succès.');
+                // Redirection vers la page de la boutique
+                window.location.href = '/Boutique/Boutique';
             } else {
                 alert('Une erreur s\'est produite lors de l\'ajout du produit.');
             }
@@ -73,7 +75,8 @@ function convertCentsToDollars(priceInCents) {
 
 function onDelete(event) {
     event.stopPropagation(); // Arrêter la propagation de l'événement de clic
-    target = event.currentTarget
+
+    const target = event.currentTarget;
 
     if (confirm("Êtes-vous sûr de vouloir supprimer cet élément ?")) {
         // Récupérer l'ID de l'élément à partir des données de l'élément lui-même
@@ -94,17 +97,7 @@ function onDelete(event) {
             success: function (response) {
                 // Traiter la réponse de suppression réussie
                 alert(response.message);
-                // Actualiser ou effectuer d'autres actions après la suppression réussie
-                var imagePath = $(target).closest('.box-img').find('img').attr('src');
-                if (fs.existsSync(imagePath)) {
-                    // Delete the file
-                    fs.unlink(imagePath, (err) => {
-                        if (err) {
-                            console.error("Erreur lors de la suppression de l'image:", err);
-                            return;
-                        }
-                    });
-                }
+                window.location.reload();
             },
             error: function (xhr, status, error) {
                 // Gérer les erreurs de suppression
@@ -115,8 +108,15 @@ function onDelete(event) {
     }
 }
 
+// Ajoutez un gestionnaire d'événements pour le bouton delete
+const deleteButtons = document.querySelectorAll('.delete-button');
+deleteButtons.forEach(deleteButton => {
+    deleteButton.addEventListener('click', onDelete);
+});
+
 
 function onClickSlide(event) {
+    
     const productsContainer = document.getElementById('productsContainer');
     const productDivs = productsContainer.querySelectorAll('.productDiv');
 
