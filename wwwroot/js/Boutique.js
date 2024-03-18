@@ -115,6 +115,7 @@ function onDelete(event) {
     }
 }
 
+
 function onClickSlide(event) {
     elem = event.currentTarget;
     const descriptionDiv = elem.querySelector('.description');
@@ -129,5 +130,26 @@ function onClickSlide(event) {
         $(descriptionDiv).slideUp();
         if (editButton) $(editButton).slideUp();
         if (deleteButton) $(deleteButton).slideUp();
+    }
+}
+
+
+function searchChanged(event) {
+    var searchInput = event.currentTarget.value.toLowerCase(); // Get the search input value and convert to lowercase for case-insensitive comparison
+    var productDivs = document.querySelectorAll('.productDiv'); // Select all product divs
+
+    if (searchInput.trim() === '') { // Check if the search input is empty
+        productDivs.forEach(function (productDiv) {
+            productDiv.style.display = 'block'; // Show all products if search input is empty
+        });
+    } else {
+        productDivs.forEach(function (productDiv) {
+            var productName = productDiv.querySelector('h4').textContent.toLowerCase(); // Get the product name and convert to lowercase
+            if (productName.includes(searchInput)) { // Check if the product name contains the search input
+                productDiv.style.display = 'block'; // Show the product if it matches
+            } else {
+                productDiv.style.display = 'none'; // Hide the product if it doesn't match
+            }
+        });
     }
 }
