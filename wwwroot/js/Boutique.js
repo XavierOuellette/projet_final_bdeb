@@ -71,83 +71,85 @@ function convertCentsToDollars(priceInCents) {
     return (priceInCents / 100).toFixed(2);
 }
 
+function onDelete(event) {
+    event.stopPropagation(); // Arrêter la propagation de l'événement de clic
+    target = event.currentTarget
 
-async function loadProducts() {
-    // Fonction pour charger les produits depuis l'API et les afficher sur la page
-    try {
+    if (confirm("Êtes-vous sûr de vouloir supprimer cet élément ?")) {
+        // Récupérer l'ID de l'élément à partir des données de l'élément lui-même
+        var itemId = $(target).closest('.box-img').attr('item-id');
 
-        const productsContainer = document.getElementById('productsContainer');
+        // Créer un objet avec les données nécessaires
+        var productData = {
+            id: itemId
+        };
+        productData = addSessionAndUserAgentData(productData);
 
-        Array.from(productsContainer.children).forEach(product => {
-            // Ajouter un gestionnaire d'événements pour agrandir le productDiv et afficher la description
-            product.onclick = function (event) {
-                const descriptionDiv = this.querySelector('.description');
-                const editButton = this.querySelector('.edit-button');
-                const deleteButton = this.querySelector('.delete-button');
-
-                if (descriptionDiv.style.display === 'none') {
-                    $(descriptionDiv).slideDown();
-                    if (editButton) $(editButton).slideDown();
-                    if (deleteButton) $(deleteButton).slideDown();
-                } else {
-                    $(descriptionDiv).slideUp();
-                    if (editButton) $(editButton).slideUp();
-                    if (deleteButton) $(deleteButton).slideUp();
-                }
-            }
-
-            // Ajouter un gestionnaire d'événements pour le bouton delete
-            const deleteButton = product.querySelector('.delete-button');
-
-            if (deleteButton) {
-                deleteButton.addEventListener('click', function (event) {
-                event.stopPropagation(); // Arrêter la propagation de l'événement de clic
-
-                if (confirm("Êtes-vous sûr de vouloir supprimer cet élément ?")) {
-                    // Récupérer l'ID de l'élément à partir des données de l'élément lui-même
-                    var itemId = $(this).closest('.box-img').attr('item-id');
-
-                    // Créer un objet avec les données nécessaires
-                    var productData = {
-                        id: itemId
-                    };
-                    productData = addSessionAndUserAgentData(productData);
-
-                    // Envoyer les données à la méthode delete_item via AJAX
-                    $.ajax({
-                        url: "http://127.0.0.1:5000/delete_item",
-                        type: "DELETE",
-                        contentType: "application/json",
-                        data: JSON.stringify(productData),
-                        success: function (response) {
-                            // Traiter la réponse de suppression réussie
-                            alert(response.message);
-                            // Actualiser ou effectuer d'autres actions après la suppression réussie
-                            var imagePath = $(this).closest('.box-img').find('img').attr('src');
-                            if (fs.existsSync(imagePath)) {
-                                // Delete the file
-                                fs.unlink(imagePath, (err) => {
-                                    if (err) {
-                                        console.error("Erreur lors de la suppression de l'image:", err);
-                                        return;
-                                    }
-                                });
-                            }
-                        },
-                        error: function (xhr, status, error) {
-                            // Gérer les erreurs de suppression
-                            console.error(error);
-                            alert("Une erreur s'est produite lors de la suppression de l'élément.");
+        // Envoyer les données à la méthode delete_item via AJAX
+        $.ajax({
+            url: "http://127.0.0.1:5000/delete_item",
+            type: "DELETE",
+            contentType: "application/json",
+            data: JSON.stringify(productData),
+            success: function (response) {
+                // Traiter la réponse de suppression réussie
+                alert(response.message);
+                // Actualiser ou effectuer d'autres actions après la suppression réussie
+                var imagePath = $(target).closest('.box-img').find('img').attr('src');
+                if (fs.existsSync(imagePath)) {
+                    // Delete the file
+                    fs.unlink(imagePath, (err) => {
+                        if (err) {
+                            console.error("Erreur lors de la suppression de l'image:", err);
+                            return;
                         }
                     });
                 }
-            });
+            },
+            error: function (xhr, status, error) {
+                // Gérer les erreurs de suppression
+                console.error(error);
+                alert("Une erreur s'est produite lors de la suppression de l'élément.");
             }
-             
         });
-    } catch (error) {
-        console.error('Erreur lors du chargement des produits :', error);
     }
 }
-// Appeler la fonction pour charger les produits lorsque la page est chargée
-window.addEventListener('DOMContentLoaded', loadProducts);
+
+
+function onClickSlide(event) {
+    elem = event.currentTarget;
+    const descriptionDiv = elem.querySelector('.description');
+    const editButton = elem.querySelector('.edit-button');
+    const deleteButton = elem.querySelector('.delete-button');
+
+    if (descriptionDiv.style.display === 'none') {
+        $(descriptionDiv).slideDown();
+        if (editButton) $(editButton).slideDown();
+        if (deleteButton) $(deleteButton).slideDown();
+    } else {
+        $(descriptionDiv).slideUp();
+        if (editButton) $(editButton).slideUp();
+        if (deleteButton) $(deleteButton).slideUp();
+    }
+}
+
+
+function searchChanged(event) {
+    var searchInput = event.currentTarget.value.toLowerCase(); // Get the search input value and convert to lowercase for case-insensitive comparison
+    var productDivs = document.querySelectorAll('.productDiv'); // Select all product divs
+
+    if (searchInput.trim() === '') { // Check if the search input is empty
+        productDivs.forEach(function (productDiv) {
+            productDiv.style.display = 'block'; // Show all products if search input is empty
+        });
+    } else {
+        productDivs.forEach(function (productDiv) {
+            var productName = productDiv.querySelector('h4').textContent.toLowerCase(); // Get the product name and convert to lowercase
+            if (productName.includes(searchInput)) { // Check if the product name contains the search input
+                productDiv.style.display = 'block'; // Show the product if it matches
+            } else {
+                productDiv.style.display = 'none'; // Hide the product if it doesn't match
+            }
+        });
+    }
+}
