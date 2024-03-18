@@ -71,7 +71,7 @@ function convertCentsToDollars(priceInCents) {
     return (priceInCents / 100).toFixed(2);
 }
 
-function onDelete(event) {
+function deleteProduct(event) {
     event.stopPropagation(); // Arrêter la propagation de l'événement de clic
     target = event.currentTarget
 
@@ -114,7 +114,6 @@ function onDelete(event) {
         });
     }
 }
-
 
 function onClickSlide(event) {
     elem = event.currentTarget;

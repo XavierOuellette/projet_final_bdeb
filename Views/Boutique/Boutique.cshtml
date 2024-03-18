@@ -64,7 +64,7 @@
                     @foreach (var product in Model)
                     {
                         <div class="box-img col-lg-3 col-sm-6 col-md-3 productDiv" item-id="@product.Id" style="margin-left: 15px; margin-right: 15px;" onclick="onClickSlide(event)">
-                            <h4>@product.Name</h4>
+                            <h4 class="name">@product.Name</h4>
                             <img src="@product.Image_Path" alt="@product.Name" style="width:108px; height:112px;" />
                             <div class="price-available">
                                 <br>
@@ -73,16 +73,16 @@
                                 <span class="availability @product.Available">@(product.Available ? "Disponible" : "Indisponible")</span>
                                 <div class="description" style="display: none;">
                                     <br>
-                                    @product.Description
+                                    <span class="description">@product.Description</span>
                                 </div>
                                 <br>
 
                                 @if (session.IsAdmin)
                                 {
-                                    <button class="edit-button" style="display: none;">
+                                    /*<button class="edit-button" style="display: none;" onclick="editProduct(event)">
                                         <i class="bi bi-pencil"></i>
-                                    </button>
-                                    <button class="delete-button" style="display: none;">
+                                    </button>*/
+                                    <button class="delete-button" style="display: none;" onclick="deleteProduct(event)">
                                         <i class="bi bi-trash"></i>
                                     </button>
                                 }
